@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 
-import { WordStore } from '../models/words';
+import { WordStore } from '../models/word';
 
 const store = new WordStore();
 
