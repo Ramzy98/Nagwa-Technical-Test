@@ -1,0 +1,3 @@
+CREATE TABLE scores(
+    score INTEGER NOT NULL
+)
