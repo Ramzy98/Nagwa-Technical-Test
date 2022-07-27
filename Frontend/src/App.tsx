@@ -1,18 +1,18 @@
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-
-import Home from './components/Home';
-import Test from './components/Test';
+import Home from './components/Home/Home';
+import NavBar from './components/NavBar/NavBar';
+import Test from './components/Test/Test';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
+      <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/test' element={<Test />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
