@@ -18,6 +18,7 @@ const index = async (req: Request, res: Response) => {
 const getScoreRank = async (req: Request, res: Response) => {
   try {
     const score = parseInt(req.params.score);
+    await store.addScore(score);
     const scores = await store.getAll();
     const scoreCount = scores.filter((s) => s.score < score).length;
     const scorePercentage = ((scoreCount / scores.length) * 100).toFixed(2);
