@@ -2,7 +2,6 @@ import Answer, { AnswerStatus } from './model';
 import { useEffect, useState } from 'react';
 
 import QuestionCard from './QuestionCard/QuestionCard';
-import React from 'react';
 import Word from '../../models/Word';
 import apiUrl from '../../utils/apiUrl';
 import styles from './Quiz.module.css';
@@ -37,19 +36,21 @@ export default function Quiz() {
 
   return (
     <div className={styles.container}>
-      {score}
+      {score * QUESTION_MARK}
       <h1 className={styles.header}>Words Test</h1>
-      {words.map((word, index) => {
-        return (
-          <QuestionCard
-            key={index}
-            word={word}
-            index={index}
-            checkAnswer={checkAnswer}
-            getNextQuestion={getNextQuestion}
-          />
-        );
-      })}
+      <div className={styles.cardsContainer}>
+        {words.map((word, index) => {
+          return (
+            <QuestionCard
+              key={index}
+              word={word}
+              index={index}
+              checkAnswer={checkAnswer}
+              getNextQuestion={getNextQuestion}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

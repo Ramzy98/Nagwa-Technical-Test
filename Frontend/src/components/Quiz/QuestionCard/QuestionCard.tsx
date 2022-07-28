@@ -3,6 +3,7 @@ import Word, { WordPOS } from '../../../models/Word';
 import { useEffect, useState } from 'react';
 
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
+import classNames from 'classnames';
 import styles from './QuestionCard.module.css';
 
 interface Props {
@@ -27,54 +28,67 @@ export default function QuestionCard({
     );
   };
 
+  const handleClick = () => {
+    getNextQuestion(index);
+    setCurrentAnswer(AnswerStatus.NotAnswered);
+  };
+
   return (
     <div className={styles.container}>
       {currentAnswer === AnswerStatus.Incorrect ? (
         <div className={styles.incorrect}>
-          <span>Incorrect Answer !</span>
+          <span>Incorrect Answer!</span>
         </div>
       ) : currentAnswer === AnswerStatus.Correct ? (
         <div className={styles.incorrect}>
-          <span className={styles.correct}>Correct Answer !</span>
+          <span className={styles.correct}>Correct Answer!</span>
         </div>
       ) : (
-        <></>
+        <>
+          <div className={styles.incorrect}>
+            <span className={styles.NotAnswered}>Not Answered yet!</span>
+          </div>
+        </>
       )}
       <h2 className={styles.word}>{word.word}</h2>
       <div className={styles.buttonsContainer}>
         <button
+          disabled={currentAnswer !== AnswerStatus.NotAnswered}
           className={styles.button}
           onClick={() => sendAnswer(WordPOS.Noun)}
         >
           Noun
         </button>
         <button
+          disabled={currentAnswer !== AnswerStatus.NotAnswered}
           className={styles.button}
           onClick={() => sendAnswer(WordPOS.Adverb)}
         >
           Adverb
         </button>
         <button
+          disabled={currentAnswer !== AnswerStatus.NotAnswered}
           className={styles.button}
           onClick={() => sendAnswer(WordPOS.Verb)}
         >
           Verb
         </button>
         <button
+          disabled={currentAnswer !== AnswerStatus.NotAnswered}
           className={styles.button}
           onClick={() => sendAnswer(WordPOS.Adjective)}
         >
           Adjective
         </button>
       </div>
-      {currentAnswer !== AnswerStatus.NotAnswered && (
-        <button
-          className={styles.nextArrow}
-          onClick={() => getNextQuestion(index)}
-        >
-          <BsFillArrowRightCircleFill size={30} />
-        </button>
-      )}
+      <button
+        className={classNames(styles.nextArrow, {
+          [styles.hide]: currentAnswer === AnswerStatus.NotAnswered,
+        })}
+        onClick={handleClick}
+      >
+        <BsFillArrowRightCircleFill size={30} />
+      </button>
     </div>
   );
 }
