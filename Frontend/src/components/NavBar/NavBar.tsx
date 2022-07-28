@@ -28,7 +28,7 @@ export default function NavBar() {
         </li>
 
         <li className={styles.link}>
-          <Link to='/search-jobs'>Take words quiz</Link>
+          <Link to='/take-quiz'>Take words quiz</Link>
         </li>
       </ul>
 

@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './components/Home/Home';
 import NavBar from './components/NavBar/NavBar';
-import Test from './components/Test/Test';
+import Quiz from './components/Quiz/Quiz';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/test' element={<Test />} />
+        <Route path='/take-quiz' element={<Quiz />} />
       </Routes>
     </BrowserRouter>
   );
