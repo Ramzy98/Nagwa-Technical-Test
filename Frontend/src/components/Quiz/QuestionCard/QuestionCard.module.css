@@ -79,3 +79,14 @@
   color: gray;
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  .buttonsContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .container {
+    width: 100%;
+    height: 250px;
+  }
+}

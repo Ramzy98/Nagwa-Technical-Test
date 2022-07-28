@@ -50,7 +50,9 @@ export default function QuestionCard({
           </div>
         </>
       )}
-      <h2 className={styles.word}>{word.word}</h2>
+      <h2 className={styles.word}>
+        {index + 1}. {word.word}
+      </h2>
       <div className={styles.buttonsContainer}>
         <button
           disabled={currentAnswer !== AnswerStatus.NotAnswered}

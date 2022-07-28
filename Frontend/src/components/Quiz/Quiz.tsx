@@ -6,11 +6,12 @@ import Word from '../../models/Word';
 import apiUrl from '../../utils/apiUrl';
 import styles from './Quiz.module.css';
 
-const QUESTION_MARK = 5;
+const QUESTION_MARK = 10;
 
 export default function Quiz() {
   const [words, setWords] = useState<Word[]>([]);
   const [score, setScore] = useState(0);
+  const [showIndex, setShowIndex] = useState(0);
 
   useEffect(() => {
     fetchWords();
@@ -18,7 +19,6 @@ export default function Quiz() {
       const res = await fetch(apiUrl('/words-random'));
       const data = await res.json();
       setWords(data);
-      console.log(data);
     }
   }, []);
 
@@ -31,24 +31,48 @@ export default function Quiz() {
   };
 
   const getNextQuestion = (currentIndex: number) => {
-    setWords(words.filter((_, index) => index !== currentIndex));
+    setShowIndex(currentIndex + 1);
+    if (words.length === 0) {
+      setScore(0);
+    }
+    if (currentIndex === words.length - 1) {
+      window.location.pathname = '/quiz/result/' + score * QUESTION_MARK;
+    }
   };
 
   return (
     <div className={styles.container}>
-      {score * QUESTION_MARK}
       <h1 className={styles.header}>Words Test</h1>
+      Progress:{' '}
+      <div className={styles.progressBar}>
+        {
+          <div
+            className={styles.progress}
+            style={
+              showIndex !== 0
+                ? { width: `${(showIndex / words.length) * 100}%` }
+                : { width: '1%' }
+            }
+          >
+            <span className={styles.progressPercentage}>
+              {(showIndex / words.length) * 100}%
+            </span>
+          </div>
+        }
+      </div>
       <div className={styles.cardsContainer}>
         {words.map((word, index) => {
-          return (
-            <QuestionCard
-              key={index}
-              word={word}
-              index={index}
-              checkAnswer={checkAnswer}
-              getNextQuestion={getNextQuestion}
-            />
-          );
+          if (index >= showIndex) {
+            return (
+              <QuestionCard
+                key={index}
+                word={word}
+                index={index}
+                checkAnswer={checkAnswer}
+                getNextQuestion={getNextQuestion}
+              />
+            );
+          }
         })}
       </div>
     </div>
