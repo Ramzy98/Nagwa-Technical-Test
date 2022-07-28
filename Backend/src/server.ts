@@ -6,13 +6,13 @@ import dotenv from 'dotenv';
 import score_routes from '../src/handlers/scores';
 import word_routes from '../src/handlers/words';
 
-dotenv.config();
-const app: express.Application = express();
+dotenv.config(); // Load .env file
+const app: express.Application = express(); // Create express app
 const PORT = process.env.PORT;
 const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200,
-};
+}; // Configure cors
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());

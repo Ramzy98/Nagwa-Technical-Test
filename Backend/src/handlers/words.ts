@@ -4,6 +4,7 @@ import { WordStore } from '../models/word';
 
 const store = new WordStore();
 
+// Get all words from database
 const index = async (req: Request, res: Response) => {
   try {
     const words = await store.getAll();
@@ -15,6 +16,7 @@ const index = async (req: Request, res: Response) => {
   }
 };
 
+// Get random words from database
 const getRandomWord = async (req: Request, res: Response) => {
   try {
     const word = await store.getRandom();
@@ -26,6 +28,7 @@ const getRandomWord = async (req: Request, res: Response) => {
   }
 };
 
+// Configure word routes
 const word_routes = (app: express.Application) => {
   app.get('/words-list', index);
   app.get('/words-random', getRandomWord);

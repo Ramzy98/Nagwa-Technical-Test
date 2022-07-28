@@ -4,6 +4,7 @@ import { ScoreStore } from '../models/score';
 
 const store = new ScoreStore();
 
+// Get all scores from database
 const index = async (req: Request, res: Response) => {
   try {
     const scores = await store.getAll();
@@ -15,6 +16,7 @@ const index = async (req: Request, res: Response) => {
   }
 };
 
+// Calculate score rank based on other scores
 const getScoreRank = async (req: Request, res: Response) => {
   try {
     const score = parseInt(req.params.score);
@@ -29,6 +31,7 @@ const getScoreRank = async (req: Request, res: Response) => {
   }
 };
 
+// Configure score routes
 const score_routes = (app: express.Application) => {
   app.get('/scores-list', index);
   app.get('/score-rank/:score', getScoreRank);
