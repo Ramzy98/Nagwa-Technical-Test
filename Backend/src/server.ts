@@ -18,7 +18,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.get('/', (req: Request, res: Response) => {
-  res.json('Hello World!');
+  res.json('Server is running');
 });
 
 word_routes(app);
