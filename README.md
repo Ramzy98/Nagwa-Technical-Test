@@ -4,11 +4,11 @@
 
 ### Frontend
 
-You can view the frontend setup instructions [here](/frontend/README.md)
+You can view the frontend setup instructions [here](https://github.com/Ramzy98/Nagwa-Technical-Test/tree/main/Frontend#readme)
 
 ### Backend
 
-You can view the backend setup instructions [here](/backend/README.md)
+You can view the backend setup instructions [here](https://github.com/Ramzy98/Nagwa-Technical-Test/tree/main/Backend#readme)
 
 ### Used technologies
 
