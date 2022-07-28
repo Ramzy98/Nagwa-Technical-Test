@@ -21,3 +21,5 @@
         4.3 Results: http://localhost:3001/quiz/result/<user_score>
         where it shows the user the results of the quiz. and his rank among the users.
         also it shows the user a button to take another quiz.
+
+### All pages are mobile responsive and responsive to any screen size.
