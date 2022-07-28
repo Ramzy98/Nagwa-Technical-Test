@@ -32,6 +32,7 @@ export default function NavBar() {
         </li>
       </ul>
 
+      {/*hamburger menu for the mobile view*/}
       <div className={styles.hamburgerMenu} onClick={toggleMenu}>
         <GiHamburgerMenu className={styles.hamburgerIcon} size={25} />
       </div>

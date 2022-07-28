@@ -22,6 +22,7 @@ export default function Quiz() {
     }
   }, []);
 
+  // check if the answer is correct or not
   const checkAnswer = (answer: Answer) => {
     if (words[answer.index].pos === answer.pos) {
       setScore(score + 1);
@@ -30,6 +31,7 @@ export default function Quiz() {
     return AnswerStatus.Incorrect;
   };
 
+  // get the next question by incrementing the showIndex
   const getNextQuestion = (currentIndex: number) => {
     setShowIndex(currentIndex + 1);
     if (words.length === 0) {
@@ -54,6 +56,7 @@ export default function Quiz() {
                 : { width: '1%' }
             }
           >
+            {/*progress is calculated (number of answered questions / total number of questions)*100*/}
             <span className={styles.progressPercentage}>
               {(showIndex / words.length) * 100}%
             </span>
@@ -62,6 +65,7 @@ export default function Quiz() {
       </div>
       <div className={styles.cardsContainer}>
         {words.map((word, index) => {
+          // showIndex is used to show the current question and hide the rest
           if (index >= showIndex) {
             return (
               <QuestionCard

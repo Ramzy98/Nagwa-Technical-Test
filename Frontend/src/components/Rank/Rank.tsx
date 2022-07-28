@@ -23,6 +23,7 @@ export default function Rank() {
         <h2 className={styles.scoreHeader}> Your score: </h2>
         <span className={styles.score}>{score}</span>
         <b>/ 100</b>
+        {/*100 is the total mark calculated from this equation: number of questions * question mark */}
       </div>
       <div className={styles.scoreContainer}>
         <h2 className={styles.scoreHeader}>
